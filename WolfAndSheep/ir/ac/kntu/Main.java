@@ -1,86 +1,29 @@
 package ir.ac.kntu;
 
-import java.lang.reflect.Array;
+import javafx.application.Application;
+import javafx.scene.Scene;
+import javafx.scene.layout.Pane;
+import javafx.scene.shape.Circle;
+import javafx.stage.Stage;
+
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 import java.util.Stack;
 
-// A class to store a graph edge
-class Edge {
-    public final int source, dest;
+import static ir.ac.kntu.Graph.isConnected;
+import static javafx.scene.paint.Color.RED;
+import static javafx.scene.paint.Color.WHITE;
 
-    private Edge(int source, int dest) {
-        this.source = source;
-        this.dest = dest;
-    }
 
-    // Factory method for creating an immutable instance of `Edge`
-    public static Edge of(int a, int b) {
-        return new Edge(a, b);        // calls private constructor
-    }
-}
+public class Main extends Application {
 
-// A class to represent a graph object
-class Graph {
-    // A list of lists to represent an adjacency list
-    List<List<Integer>> adjList = null;
-    List<Edge> edges;
-    int N;
-
-    // Constructor
-    Graph(ArrayList<Edge> edges, int N) {
-        adjList = new ArrayList<>();
-        this.edges = edges;
-        this.N = N;
-        for (int i = 0; i < N; i++) {
-            adjList.add(new ArrayList<Integer>());
-        }
-
-        // add edges to the undirected graph
-        for (Edge edge : edges) {
-            adjList.get(edge.source).add(edge.dest);
-        }
-    }
-
-}
-
-class Main {
-    // Function to perform DFS traversal in a directed graph to find the
-    // complete path between source and destination vertices
-    public static boolean isConnected(Graph graph, int src, int dest,
-                                      boolean[] discovered, Stack<Integer> path) {
-        // mark the current node as discovered
-        discovered[src] = true;
-
-        // include the current node in the path
-        path.add(src);
-
-        // if destination vertex is found
-        if (src == dest) {
-            return true;
-        }
-
-        // do for every edge `src —> i`
-        for (int i : graph.adjList.get(src)) {
-            // if `u` is not yet discovered
-            if (!discovered[i]) {
-                // return true if the destination is found
-                if (isConnected(graph, i, dest, discovered, path)) {
-                    return true;
-                }
-            }
-        }
-
-        // backtrack: remove the current node from the path
-        path.pop();
-
-        // return false if destination vertex is not reachable from src
-        return false;
-    }
 
     public static void main(String[] args) {
-        // List of graph edges as per the above diagram
+        launch(args);
+    }
+
+    @Override
+    public void start(Stage stage) throws Exception {
+        int N = 7;
         ArrayList<Edge> edges = new ArrayList<Edge>();
         edges.add(Edge.of(0, 7));
         edges.add(Edge.of(0, 3));
@@ -95,10 +38,7 @@ class Main {
         edges.add(Edge.of(5, 6));
         edges.add(Edge.of(6, 7));
 
-//        // total number of nodes in the graph (labeled from 0 to `N-1`)
-//        int N = 8;
 
-        // source and destination vertex
         int src = 0, dest = 7;
 
         // build a graph from the given edges
@@ -130,7 +70,8 @@ class Main {
 //            System.out.println(edges.indexOf(Edge.of(path.get(i),path.get(i+1))));
             for (int j = 0; j < edges.size(); j++) {
 //                System.out.println(edge.source + "   " + edge.dest);
-                if (edges.get(j).source == pathSheep.get(i) && edges.get(j).dest == pathSheep.get(i + 1)) {
+                if (edges.get(j).source == pathSheep.get(i) &&
+                        edges.get(j).dest == pathSheep.get(i + 1)) {
                     edges.remove(j);
                 }
             }
@@ -161,5 +102,28 @@ class Main {
             System.out.println("No path exists for Wolf between vertices " + src +
                     " and " + dest);
         }
+
+        Pane pane = new Pane();
+        ArrayList<Circle> circles = new ArrayList(N);
+        for (int j = 0; j < N / 2; j++) {
+            Circle circle = new Circle(100, (j + 1) * 100,3,RED);
+            circles.add(circle);
+        }
+        for (int j = N / 2; j < N; j++) {
+            Circle circle = new Circle(300, (j - (N / 2) + 1) * 100,3,RED);
+            circles.add(circle);
+        }
+        pane.getChildren().addAll(circles);
+
+        Scene graphScene = new Scene(pane, 1000, 800, WHITE);
+
+        stage.setTitle(" Box Diagram ");
+        stage.setScene(graphScene);
+        stage.show();
+
+//        stage.setTitle(" Box Diagram ");
+//        stage.setScene(graphWolf.getGraphScene());
+//        stage.show();
+
     }
 }

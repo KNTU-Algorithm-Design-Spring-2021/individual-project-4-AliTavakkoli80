@@ -1,28 +1,14 @@
 package ir.ac.kntu;
 
-import javafx.application.Application;
-import javafx.scene.Scene;
-import javafx.scene.layout.Pane;
-import javafx.scene.shape.Circle;
-import javafx.stage.Stage;
-
 import java.util.ArrayList;
 import java.util.Stack;
 
 import static ir.ac.kntu.Graph.isConnected;
-import static javafx.scene.paint.Color.RED;
-import static javafx.scene.paint.Color.WHITE;
 
 
-public class MainW extends Application {
-
-
+//public class MainW extends Application {
+public class MainW {
     public static void main(String[] args) {
-        launch(args);
-    }
-
-    @Override
-    public void start(Stage stage) throws Exception {
         int N = 7;
         ArrayList<Edge> edges = new ArrayList<Edge>();
         edges.add(Edge.of(0, 7));
@@ -48,7 +34,6 @@ public class MainW extends Application {
         boolean[] discoveredSheep = new boolean[edges.size()];
 
 
-
         // To store the complete path between source and destination
         Stack<Integer> pathSheep = new Stack<>();
 
@@ -65,7 +50,7 @@ public class MainW extends Application {
 
 
         int i;
-        for (i = 0; i < pathSheep.size()-1; i++) {
+        for (i = 0; i < pathSheep.size() - 1; i++) {
 //            System.out.println(path.get(i) + "," + path.get(i+1));
 //            System.out.println(edges.indexOf(Edge.of(path.get(i),path.get(i+1))));
             for (int j = 0; j < edges.size(); j++) {
@@ -83,13 +68,11 @@ public class MainW extends Application {
 //        }
 
 
-
         // build a graph from the given edges
         Graph graphWolf = new Graph(edges, edges.size());
 
         // to keep track of whether a vertex is discovered or not
         boolean[] discoveredWolf = new boolean[edges.size()];
-
 
 
         // To store the complete path between source and destination
@@ -102,28 +85,37 @@ public class MainW extends Application {
             System.out.println("No path exists for Wolf between vertices " + src +
                     " and " + dest);
         }
-
-        Pane pane = new Pane();
-        ArrayList<Circle> circles = new ArrayList<Circle>(N);
-        for (int j = 0; j < N / 2; j++) {
-            Circle circle = new Circle(100, (j + 1) * 100,3,RED);
-            circles.add(circle);
-        }
-        for (int j = N / 2; j < N; j++) {
-            Circle circle = new Circle(300, (j - (N / 2) + 1) * 100,3,RED);
-            circles.add(circle);
-        }
-        pane.getChildren().addAll(circles);
-
-        Scene graphScene = new Scene(pane, 1000, 800, WHITE);
-
-        stage.setTitle(" Box Diagram ");
-        stage.setScene(graphScene);
-        stage.show();
-
-//        stage.setTitle(" Box Diagram ");
-//        stage.setScene(graphWolf.getGraphScene());
-//        stage.show();
-
     }
+
+//    public static void main(String[] args) {
+//        launch(args);
+//    }
+
+//    @Override
+//    public void start(Stage stage) throws Exception {
+//
+//
+//        Pane pane = new Pane();
+//        ArrayList<Circle> circles = new ArrayList<Circle>(N);
+//        for (int j = 0; j < N / 2; j++) {
+//            Circle circle = new Circle(100, (j + 1) * 100,3,RED);
+//            circles.add(circle);
+//        }
+//        for (int j = N / 2; j < N; j++) {
+//            Circle circle = new Circle(300, (j - (N / 2) + 1) * 100,3,RED);
+//            circles.add(circle);
+//        }
+//        pane.getChildren().addAll(circles);
+//
+//        Scene graphScene = new Scene(pane, 1000, 800, WHITE);
+//
+//        stage.setTitle(" Box Diagram ");
+//        stage.setScene(graphScene);
+//        stage.show();
+//
+////        stage.setTitle(" Box Diagram ");
+////        stage.setScene(graphWolf.getGraphScene());
+////        stage.show();
+//
+//    }
 }

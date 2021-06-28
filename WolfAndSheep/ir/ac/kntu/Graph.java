@@ -5,7 +5,6 @@ import javafx.scene.layout.Pane;
 import javafx.scene.shape.Circle;
 
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Stack;
 
 import static javafx.scene.paint.Color.RED;
@@ -16,8 +15,8 @@ public class Graph {
 //    int xGraphSceneSize = 1000;
 //    int yGraphSceneSize = 800;
 //    Scene graphScene;
-    List<List<Integer>> adjList = null;
-    List<Edge> edges;
+    ArrayList<ArrayList<Integer>> adjList = null;
+    ArrayList<Edge> edges;
     int N;
 
     // Constructor

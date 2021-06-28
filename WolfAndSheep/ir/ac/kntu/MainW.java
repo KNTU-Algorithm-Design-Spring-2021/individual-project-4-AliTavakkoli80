@@ -14,7 +14,7 @@ import static javafx.scene.paint.Color.RED;
 import static javafx.scene.paint.Color.WHITE;
 
 
-public class Main extends Application {
+public class MainW extends Application {
 
 
     public static void main(String[] args) {
@@ -104,7 +104,7 @@ public class Main extends Application {
         }
 
         Pane pane = new Pane();
-        ArrayList<Circle> circles = new ArrayList(N);
+        ArrayList<Circle> circles = new ArrayList<Circle>(N);
         for (int j = 0; j < N / 2; j++) {
             Circle circle = new Circle(100, (j + 1) * 100,3,RED);
             circles.add(circle);

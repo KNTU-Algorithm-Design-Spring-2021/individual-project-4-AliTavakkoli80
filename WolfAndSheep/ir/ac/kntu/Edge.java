@@ -9,7 +9,7 @@ public class Edge {
     }
 
     // Factory method for creating an immutable instance of `Edge`
-    public static ir.ac.kntu.Edge of(int a, int b) {
-        return new ir.ac.kntu.Edge(a, b);        // calls private constructor
+    public static Edge of(int a, int b) {
+        return new Edge(a, b);        // calls private constructor
     }
 }

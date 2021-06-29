@@ -27,20 +27,20 @@ public class MainW {
 //        edges.add(Edge.of(4, 6));
 //        edges.add(Edge.of(5, 6));
 //        edges.add(Edge.of(6, 7));
-//        0 7
-//        0 3
-//        1 0
-//        1 2
-//        1 4
-//        2 7
-//        3 4
-//        3 5
-//        4 3
-//        4 6
-//        5 6
-//        6 7
-        System.out.println(edges.toString());
-        System.out.println(edges.size());
+//0 7
+//0 3
+//1 0
+//1 2
+//1 4
+//2 7
+//3 4
+//3 5
+//4 3
+//4 6
+//5 6
+//6 7
+//        System.out.println(edges.toString());
+//        System.out.println(edges.size());
         int src, dest;
         src = inputManager.enterSource();
         dest = inputManager.enterDest();
@@ -82,7 +82,7 @@ public class MainW {
 
 
         Graph graphWolf = new Graph(edges, edges.size());
-        System.out.println(edges.toString());
+//        System.out.println(edges.toString());
         boolean[] discoveredWolf = new boolean[edges.size()];
 
 

@@ -1,6 +1,7 @@
 package ir.ac.kntu;
 
 import java.util.ArrayList;
+import java.util.Scanner;
 import java.util.Stack;
 
 import static ir.ac.kntu.Graph.isConnected;
@@ -9,23 +10,40 @@ import static ir.ac.kntu.Graph.isConnected;
 //public class MainW extends Application {
 public class MainW {
     public static void main(String[] args) {
-        int N = 7;
-        ArrayList<Edge> edges = new ArrayList<Edge>();
-        edges.add(Edge.of(0, 7));
-        edges.add(Edge.of(0, 3));
-        edges.add(Edge.of(1, 0));
-        edges.add(Edge.of(1, 2));
-        edges.add(Edge.of(1, 4));
-        edges.add(Edge.of(2, 7));
-        edges.add(Edge.of(3, 4));
-        edges.add(Edge.of(3, 5));
-        edges.add(Edge.of(4, 3));
-        edges.add(Edge.of(4, 6));
-        edges.add(Edge.of(5, 6));
-        edges.add(Edge.of(6, 7));
 
+        Scanner scanner = new Scanner(System.in);
+        InputManagerW inputManager = new InputManagerW(scanner);
+        ArrayList<Edge> edges = inputManager.edgeGetter();
 
-        int src = 0, dest = 7;
+//        edges.add(Edge.of(0, 7));
+//        edges.add(Edge.of(0, 3));
+//        edges.add(Edge.of(1, 0));
+//        edges.add(Edge.of(1, 2));
+//        edges.add(Edge.of(1, 4));
+//        edges.add(Edge.of(2, 7));
+//        edges.add(Edge.of(3, 4));
+//        edges.add(Edge.of(3, 5));
+//        edges.add(Edge.of(4, 3));
+//        edges.add(Edge.of(4, 6));
+//        edges.add(Edge.of(5, 6));
+//        edges.add(Edge.of(6, 7));
+//        0 7
+//        0 3
+//        1 0
+//        1 2
+//        1 4
+//        2 7
+//        3 4
+//        3 5
+//        4 3
+//        4 6
+//        5 6
+//        6 7
+        System.out.println(edges.toString());
+        System.out.println(edges.size());
+        int src, dest;
+        src = inputManager.enterSource();
+        dest = inputManager.enterDest();
 
         // build a graph from the given edges
         Graph graphSheep = new Graph(edges, edges.size());
@@ -51,8 +69,6 @@ public class MainW {
 
         int i;
         for (i = 0; i < pathSheep.size() - 1; i++) {
-//            System.out.println(path.get(i) + "," + path.get(i+1));
-//            System.out.println(edges.indexOf(Edge.of(path.get(i),path.get(i+1))));
             for (int j = 0; j < edges.size(); j++) {
 //                System.out.println(edge.source + "   " + edge.dest);
                 if (edges.get(j).source == pathSheep.get(i) &&
@@ -60,18 +76,13 @@ public class MainW {
                     edges.remove(j);
                 }
             }
-//            edges.remove(Edge.of(path.get(i),path.get(i+1)));
         }
 
-//        for (Edge edge : edges) {
-//            System.out.println(edge.source + "   " + edge.dest);
-//        }
 
 
-        // build a graph from the given edges
+
         Graph graphWolf = new Graph(edges, edges.size());
-
-        // to keep track of whether a vertex is discovered or not
+        System.out.println(edges.toString());
         boolean[] discoveredWolf = new boolean[edges.size()];
 
 

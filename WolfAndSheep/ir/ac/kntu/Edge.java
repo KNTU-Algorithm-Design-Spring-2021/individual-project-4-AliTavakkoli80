@@ -12,4 +12,12 @@ public class Edge {
     public static Edge of(int a, int b) {
         return new Edge(a, b);        // calls private constructor
     }
+
+    @Override
+    public String toString() {
+        return "Edge{" +
+                "source=" + source +
+                ", dest=" + dest +
+                '}';
+    }
 }

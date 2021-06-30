@@ -93,8 +93,7 @@ public class MainW {
                     " to vertex " + dest);
             System.out.println("The complete path for Wolf is " + pathWolf);
         } else {
-            System.out.println("No path exists for Wolf between vertices " + src +
-                    " and " + dest);
+            System.out.println("No path exists for Wolf between vertices " + src + " and " + dest);
         }
     }
 

@@ -1,6 +1,8 @@
 package ir.ac.kntu;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Scanner;
 
 public class MainP {
 
@@ -13,91 +15,103 @@ public class MainP {
         int[] stuffs = inputManager.inputArrayGetter();
         int k = inputManager.inputTruckGetter();
 
-        outputManager.showArray(partitionIntoKSegments(stuffs,stuffs.length,k));
+
+        outputManager.showArray(greedyForPartitions(stuffs, stuffs.length, k, solve(stuffs, stuffs.length, k)));
+
     }
 
-    static ArrayList<ArrayList<Integer>> partitionIntoKSegments(int arr[], int N, int K) {
+    static boolean check(int mid, int array[], int n, int K) {
 
-        // Stores the partitions
-        ArrayList<ArrayList<Integer>> P = new ArrayList<ArrayList<Integer>>();
+        int count = 0;
+        int sum = 0;
+        for (int i = 0; i < n; i++) {
 
-        // If N is less than K
-        if (N < K) {
-            System.out.println("Invalid inputs");
-            return P;
+            // If individual element is greater
+            // maximum possible sum
+            if (array[i] > mid)
+                return false;
+
+            // Increase sum of current sub - array
+            sum += array[i];
+
+            // If the sum is greater than
+            // mid increase count
+            if (sum > mid) {
+                count++;
+                sum = array[i];
+            }
+        }
+        count++;
+//        System.out.println(count);
+        // Check condition
+        if (count <= K)
+            return true;
+        return false;
+    }
+
+    // Function to find maximum subarray sum
+    // which is minimum
+    static int solve(int array[], int n, int K) {
+        int start = 1;
+        for (int i = 0; i < n; ++i) {
+            if (array[i] > start)
+                start = array[i];
+        }
+        int end = 0;
+
+        for (int i = 0; i < n; i++) {
+            end += array[i];
         }
 
-        // Map to store the K
-        // largest elements
-        HashMap<Integer, Integer> mp = new HashMap<Integer, Integer>();
+        // Answer stores possible
+        // maximum sub array sum
+        int answer = 0;
+        while (start <= end) {
+            int mid = (start + end) / 2;
 
-        // Auxiliary array to
-        // store and sort arr[]
-        Integer[] temp = new Integer[N];
-
-        // Stores the maximum sum
-        int ans = 0;
-
-        // Copy arr[] to temp[]
-        for (int i = 0; i < N; i++) {
-            temp[i] = arr[i];
-        }
-
-        // Sort array temp[] in
-        // descending order
-        Arrays.sort(temp, Collections.reverseOrder());
-        //Array.Reverse(temp);
-
-        // Iterate in the range [0, K - 1]
-        for (int i = 0; i < K; i++) {
-
-            // Increment sum by temp[i]
-            ans += temp[i];
-
-            // Increment count of
-            // temp[i] in the map mp
-            if (mp.containsKey(temp[i]))
-                mp.get(temp[i]++);
-            else
-                mp.put(temp[i], 1);
-        }
-
-
-
-        // Stores temporary subarrays
-        ArrayList<Integer> V = new ArrayList<Integer>();
-
-        // Iterate over the range [0, N - 1]
-        for (int i = 0; i < N; i++) {
-            V.add(arr[i]);
-
-            // If current element is
-            // one of the K largest
-            if (mp.containsKey(arr[i]) && mp.get(arr[i]) > 0) {
-                mp.get(arr[i]--);
-                K--;
-
-                if (K == 0) {
-                    i++;
-
-                    while (i < N) {
-                        V.add(arr[i]);
-                        i++;
-                    }
-                }
-
-                if (V.size() > 0) {
-                    P.add(new ArrayList<Integer>(V));
-                    V.clear();
-                }
+            // If mid is possible solution
+            // Put answer = mid;
+            if (check(mid, array, n, K)) {
+                answer = mid;
+                end = mid - 1;
+            } else {
+                start = mid + 1;
             }
         }
 
-        // Print the ans
-        System.out.println(ans);
+        return answer;
+    }
 
+    public static ArrayList<ArrayList<Integer>> greedyForPartitions(int[] array, int n, int k, int wLimit) {
+        ArrayList<ArrayList<Integer>> result = new ArrayList<ArrayList<Integer>>(k);
+        ArrayList<Integer> tmpinput = new ArrayList<>(n);
+        for (int i = 0; i < n; i++) {
+            tmpinput.add(array[i]);
+        }
+        Collections.sort(tmpinput);
+        Collections.reverse(tmpinput);
+//        System.out.println(tmpinput.toString());
+        boolean flag = true;
+        while (tmpinput.size() > 0) {
+            ArrayList<Integer> tmpArrayList = new ArrayList<>();
+            while (sum(tmpArrayList, tmpArrayList.size())+tmpinput.get(0) <= wLimit) {
+                tmpArrayList.add(tmpinput.get(0));
+                tmpinput.remove(0);
+                if (tmpinput.size() == 0){
+                    break;
+                }
+//                System.out.println(tmpinput.get(tmpinput.size()-1));
+            }
+            result.add(tmpArrayList);
+        }
+        return result;
+    }
 
-        // Print the partition
-        return P;
+    public static int sum(ArrayList<Integer> arrayList, int n) {
+        int sum = 0;
+        for (int i = 0; i < n; i++) {
+            sum += arrayList.get(i);
+        }
+        return sum;
     }
 }

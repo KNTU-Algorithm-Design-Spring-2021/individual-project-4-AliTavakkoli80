@@ -1,6 +1,5 @@
 package ir.ac.kntu;
 
-import java.util.ArrayList;
 import java.util.Scanner;
 
 public class InputManager {
@@ -10,23 +9,18 @@ public class InputManager {
         this.scanner = scanner;
     }
 
-    public int inputWeightLimitGetter(){
-        System.out.println("Enter weight limit : ");
-        return scanner.nextInt();
-    }
-
     public int inputTruckGetter(){
         System.out.println("Enter number of trucks : ");
         return scanner.nextInt();
     }
 
-    public ArrayList<Integer> inputArrayGetter(){
+    public int[] inputArrayGetter(){
         System.out.println("Enter number of stuffs : ");
         int N = scanner.nextInt();
-        ArrayList<Integer> stuffs = new ArrayList(N);
+        int[] stuffs = new int[N];
         System.out.println("Enter stuffs weight : ");
         for (int i = 0; i < N; i++) {
-            stuffs.add(scanner.nextInt());
+            stuffs[i] = scanner.nextInt();
         }
         return stuffs;
     }

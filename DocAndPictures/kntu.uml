@@ -3,60 +3,62 @@
   <ID>JAVA</ID>
   <OriginalElement>ir.ac.kntu</OriginalElement>
   <nodes>
-    <node x="0.0" y="232.0">ir.ac.kntu.InputManagerW</node>
-    <node x="250.00000000000003" y="464.0">ir.ac.kntu.MainW</node>
-    <node x="196.0" y="616.0">ir.ac.kntu.OutputManager</node>
-    <node x="229.00000000000003" y="232.0">ir.ac.kntu.Graph</node>
-    <node x="0.0" y="563.0">ir.ac.kntu.InputManager</node>
-    <node x="4.875" y="773.0">ir.ac.kntu.MainP</node>
-    <node x="339.52500000000003" y="0.0">ir.ac.kntu.Edge</node>
+    <node x="404.0" y="232.0">ir.ac.kntu.InputManagerW</node>
+    <node x="381.25" y="464.0">ir.ac.kntu.MainW</node>
+    <node x="0.0" y="616.0">ir.ac.kntu.OutputManager</node>
+    <node x="0.0" y="232.0">ir.ac.kntu.Graph</node>
+    <node x="320.0" y="563.0">ir.ac.kntu.InputManager</node>
+    <node x="86.0" y="773.0">ir.ac.kntu.MainP</node>
+    <node x="342.35" y="0.0">ir.ac.kntu.Edge</node>
   </nodes>
   <notes />
   <edges>
     <edge source="ir.ac.kntu.InputManagerW" target="ir.ac.kntu.Edge">
       <point x="0.0" y="-91.0" />
-      <point x="104.5" y="202.0" />
-      <point x="356.40000000000003" y="202.0" />
-      <point x="-50.625" y="91.0" />
+      <point x="508.5" y="212.0" />
+      <point x="426.725" y="212.0" />
+      <point x="16.875" y="91.0" />
     </edge>
     <edge source="ir.ac.kntu.MainW" target="ir.ac.kntu.Graph">
-      <point x="0.0" y="-27.0" />
-      <point x="-96.0" y="91.0" />
+      <point x="-30.0" y="-27.0" />
+      <point x="426.25" y="434.0" />
+      <point x="288.0" y="434.0" />
+      <point x="96.0" y="91.0" />
     </edge>
     <edge source="ir.ac.kntu.MainP" target="ir.ac.kntu.InputManager">
-      <point x="-152.625" y="-38.0" />
-      <point x="55.75" y="748.0" />
-      <point x="44.0" y="748.0" />
-      <point x="-44.0" y="80.0" />
+      <point x="151.5" y="-71.0" />
+      <point x="439.5" y="748.0" />
+      <point x="452.0" y="748.0" />
+      <point x="44.0" y="80.0" />
     </edge>
     <edge source="ir.ac.kntu.MainW" target="ir.ac.kntu.InputManagerW">
-      <point x="-60.0" y="-27.0" />
-      <point x="265.0" y="444.0" />
-      <point x="52.25" y="444.0" />
-      <point x="-52.25" y="91.0" />
+      <point x="30.0" y="-27.0" />
+      <point x="486.25" y="434.0" />
+      <point x="560.75" y="434.0" />
+      <point x="52.25" y="91.0" />
     </edge>
     <edge source="ir.ac.kntu.MainP" target="ir.ac.kntu.OutputManager">
-      <point x="152.625" y="-38.0" />
-      <point x="361.0" y="748.0" />
-      <point x="421.0" y="748.0" />
-      <point x="75.0" y="27.0" />
+      <point x="-151.5" y="-71.0" />
+      <point x="136.5" y="748.0" />
+      <point x="75.0" y="748.0" />
+      <point x="-75.0" y="27.0" />
     </edge>
     <edge source="ir.ac.kntu.Graph" target="ir.ac.kntu.Edge">
-      <point x="96.0" y="-91.0" />
-      <point x="517.0" y="212.0" />
-      <point x="423.90000000000003" y="212.0" />
-      <point x="16.875" y="91.0" />
+      <point x="-96.0" y="-91.0" />
+      <point x="96.0" y="202.0" />
+      <point x="359.225" y="202.0" />
+      <point x="-50.625" y="91.0" />
     </edge>
     <edge source="ir.ac.kntu.MainW" target="ir.ac.kntu.Edge">
       <point x="60.0" y="-27.0" />
-      <point x="385.0" y="444.0" />
+      <point x="516.25" y="444.0" />
       <point x="623.5" y="444.0" />
       <point x="623.5" y="202.0" />
-      <point x="457.65000000000003" y="202.0" />
+      <point x="460.475" y="202.0" />
       <point x="50.625" y="91.0" />
     </edge>
   </edges>
-  <settings layout="Hierarchic Group" zoom="1.0" x="170.5" y="352.0" />
+  <settings layout="Hierarchic Group" zoom="1.0" x="170.5" y="592.0" />
   <SelectedNodes>
     <node>ir.ac.kntu.InputManagerW</node>
   </SelectedNodes>
